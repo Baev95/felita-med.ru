@@ -1,0 +1,1 @@
+<p <?= $class ? "class='contacts__location'" : ""; ?>><button class="popup-btn" data-path="popup-city">Ростов-на-Дону</button>, ул. Красноармейская, д. 227</p>
