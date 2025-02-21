@@ -12,7 +12,7 @@ $rsData = $entity_data_class::getList();
 while ($arData = $rsData->Fetch()): ?>
 
 	</main>
-	
+
 	<footer class="footer">
 		<div class="footer__plashka">
 			<div class="container">
@@ -218,7 +218,7 @@ while ($arData = $rsData->Fetch()): ?>
 	</div>
 
 	<?
-	$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/modals/popup_change.php', array('phone' => $arData['UF_PHONE'], 'data' => $arData), array('SHOW_BORDER' => false));
+	$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/modals/popup_change.php', array('data' => $arData), array('SHOW_BORDER' => false));
 	?>
 
 	<?

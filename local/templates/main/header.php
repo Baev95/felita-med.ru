@@ -25,7 +25,7 @@ while ($arData = $rsData->Fetch()): ?>
 
 		<title><? $APPLICATION->ShowTitle(false); ?></title>
 		<link rel='icon' href='<?= SITE_TEMPLATE_PATH ?>/images/icons/favicon.png' type='image/png' sizes='32x32'>
-		<link rel='shortcut con' href='<?= SITE_TEMPLATE_PATH ?>/images/favicon.ico' type='image/png' sizes='16x16'>
+		<link rel='shortcut con' href='<?= SITE_TEMPLATE_PATH ?>/images/icons/favicon.ico' type='image/png' sizes='16x16'>
 		<?
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/swiper.min.css');
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/fancybox.min.css');

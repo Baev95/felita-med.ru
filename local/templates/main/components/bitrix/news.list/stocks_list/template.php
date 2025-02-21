@@ -1,10 +1,51 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+use Bitrix\Main\Page\Asset;
+use Bitrix\Main\Loader;
+use Bitrix\Highloadblock as HL;
+
+Loader::includeModule("highloadblock");
+$entity = HL\HighloadBlockTable::compileEntity(1);
+$entity_data_class = $entity->getDataClass();
+$rsData = $entity_data_class::getList();
+while ($arData = $rsData->Fetch()): ?>
 
 
+	<section class="stocks-page section-offset">
+		<div class="container">
+			<div class="tab">
+				<div class="stocks-page__sort">
+					<div class="stocks-page__tab_btns tab__btns tab__btns-acc">
+						<?
+						$i = $j = 0;
+						foreach ($arResult['SECTIONS'] as $section): ?>
+							<? if (count($arResult['SECTIONS']) > 1) : ?>
+								<button class="stocks-page__tab_btn tab__btn-acc tab__btn<?= $i++ == 0 ? " active" : "" ?>" data-id="<?= $section['NAME'] ?>">
+									<span><?= $section['NAME'] ?></span>
+									<div class="stocks-page__btn-arrow btn-arrow"></div>
+								</button>
+							<? endif ?>
+						<? endforeach; ?>
+					</div>
+				</div>
+				<? foreach ($arResult['SECTIONS'] as $elements): ?>
+					<div class="tabcontent<?= $j++ == 0 ? " active" : "" ?>" data-id="<?= $elements['NAME'] ?>">
+						<div class="stocks-page__cards">
+							<?= $elements['HTML'] ?>
+						</div>
+					</div>
+				<? endforeach; ?>
+			</div>
+		</div>
+	</section>
 
-а
+	<?
+	$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form-white.php', array('data' => $arData), array('SHOW_BORDER' => false));
+	?>
+<? endwhile ?>
 
-<?
+
+<? /*
 switch ($arParams['CUSTOM']):
 	case "services": // Для страницы услуг
 	case "main": // Для главной страницы
@@ -72,3 +113,5 @@ switch ($arParams['CUSTOM']):
 		break;
 endswitch;
 ?>
+
+*/ ?>
