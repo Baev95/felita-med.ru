@@ -29,6 +29,7 @@ while ($arData = $rsData->Fetch()): ?>
 		<?
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/swiper.min.css');
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/fancybox.min.css');
+		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/styles.css');
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/styles.css');
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/styles.css');
 		Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/build/swiper-bundle.min.js');

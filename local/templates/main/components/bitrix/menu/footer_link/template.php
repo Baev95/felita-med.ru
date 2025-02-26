@@ -12,97 +12,147 @@
 /** @var CBitrixComponent $component */
 
 $this->setFrameMode(true);
+$services = $about = $other = "";
+
+if ($arParams['WHERE'] === 'MAP') {
+
+	$other = <<<HTML
+<div class="site-map__items">
+<ul>
+HTML;
+	foreach ($arResult as $item) : ?>
+<? if ($item['TEXT'] == 'Услуги') {
+			if (CModule::IncludeModule("iblock")) {
+				$rsSelect = CIBlockSection::GetList(["SORT" => "ASC"], ['IBLOCK_ID' => 5], ['ELEMENT_SUBSECTIONS' => 'Y'], false, []);
+				foreach ($rsSelect->arResult as $item) {
+					if ($item['ELEMENT_CNT'] > 0) {
+						$services .= <<<HTML
+			<div class="site-map__item">
+				<div class="site-map__accordion accordion">
+					<div class="site-map__item_top ">
+						<p class="site-map__item_title">{$item['NAME']}</p>
+					</div>
+				</div>
+				<div class="site-map__item_list accordion__content">
+					<ul>
+			HTML;
+						$rsElements = CIBlockElement::GetList(["SORT" => "ASC"], ['IBLOCK_ID' => 5, 'IBLOCK_SECTION_ID' => $item['ID']], false, false, ['CODE', 'NAME', 'PROPERTY_PRICE']);
+						while ($arElement = $rsElements->GetNext()) {
+							$services .= <<<HTML
+			<li>
+				<a href="/services/{$arElement['CODE']}/">{$arElement['NAME']}</a>
+			</li>
+			HTML;
+						}
+						$services .= <<<HTML
+					</ul>
+				</div>
+			</div>
+			HTML;
+					};
+				}
+			}
+		} elseif ($item['TEXT'] == 'О клинике') {
+			$about = <<<HTML
+			<div class="site-map__item">
+				<div class="site-map__accordion accordion">
+					<div class="site-map__item_top ">
+						<p class="site-map__item_title">{$item['TEXT']}</p>
+					</div>
+				</div>
+				<div class="site-map__item_list accordion__content">
+					<ul>
+			HTML;
+			foreach ($arResult as $sub_item): ?>
+		<? if ($sub_item["DEPTH_LEVEL"] == 2):
+					$about .=  <<<HTML
+				<li>
+				<a href="/services/{$sub_item['LINK']}">{$sub_item['TEXT']}</a>
+				</li>
+				HTML;
+
+				endif ?>
+<? endforeach;
+			$about .=  <<<HTML
+					</ul>
+				</div>
+			</div>
+			HTML;
+		} else {
+			if ($item["DEPTH_LEVEL"] == 1) :
+				$other .= <<<HTML
+				<li>
+				<a href="/services/{$item['LINK']}/">{$item['TEXT']}</a>
+				</li>
+				HTML;
+			endif;
+		}
+	endforeach;
+	$other .= <<<HTML
+	</ul>
+</div>
+HTML;
+} elseif ($arParams['WHERE'] === 'FOOTER') {
+
+	foreach ($arResult as $item) : ?>
+<? if ($item['TEXT'] == 'Услуги') {
+			if (CModule::IncludeModule("iblock")) {
+				$rsSelect = CIBlockSection::GetList(["SORT" => "ASC"], ['IBLOCK_ID' => 5], ['ELEMENT_SUBSECTIONS' => 'Y'], false, []);
+				foreach ($rsSelect->arResult as $item) {
+					if ($item['ELEMENT_CNT'] > 0) {
+						$services .= <<<HTML
+				<div class="footer__nav_item">
+				<p class="footer__nav_acc">{$item['NAME']}</p>
+				<ul>
+			HTML;
+						$rsElements = CIBlockElement::GetList(["SORT" => "ASC"], ['IBLOCK_ID' => 5, 'IBLOCK_SECTION_ID' => $item['ID']], false, false, ['CODE', 'NAME', 'PROPERTY_PRICE']);
+						while ($arElement = $rsElements->GetNext()) {
+							$services .= <<<HTML
+			<li>
+				<a href="/services/{$arElement['CODE']}/">{$arElement['NAME']}</a>
+			</li>
+			HTML;
+						}
+						$services .= <<<HTML
+					</ul>
+				</div>
+			HTML;
+					};
+				}
+			}
+		} elseif ($item['TEXT'] == 'О клинике') {
+			$about = <<<HTML
+			<div class="footer__nav_item footer__nav_item-menu">
+					<ul>
+			HTML;
+			foreach ($arResult as $sub_item): ?>
+		<? if ($sub_item["DEPTH_LEVEL"] == 2):
+					$about .=  <<<HTML
+				<li>
+				<a href="{$sub_item['LINK']}">{$sub_item['TEXT']}</a>
+				</li>
+				HTML;
+				endif ?>
+<? endforeach;
+		} else {
+			if ($item["DEPTH_LEVEL"] == 1) :
+				$about .= <<<HTML
+				<li>
+				<a href="{$item['LINK']}">{$item['TEXT']}</a>
+				</li>
+				HTML;
+			endif;
+		}
+	endforeach;
+	$about .=  <<<HTML
+					$other
+				</ul>
+			</div>
+			HTML;
+}
+
+echo $services;
+echo $about;
+echo $other;
+
 ?>
-<? foreach ($arResult as $item) : ?>
-
-	<? // var_dump($item); 
-	?>
-
-
-
-
-	<nav class="footer__nav footer__separator">
-
-		<div class="footer__nav_item">
-			<p class="footer__nav_acc">Психолог</p>
-			<ul>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-				<li><a href="#">Лечение бессонницы</a></li>
-				<li><a href="#">Психологическая помощь</a></li>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-			</ul>
-		</div>
-		<div class="footer__nav_item">
-			<p class="footer__nav_acc">Врач-психиатр</p>
-			<ul>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-				<li><a href="#">Лечение бессонницы</a></li>
-				<li><a href="#">Психологическая помощь</a></li>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-			</ul>
-		</div>
-		<div class="footer__nav_item">
-			<p class="footer__nav_acc">Лечение зависимостей</p>
-			<ul>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-				<li><a href="#">Лечение бессонницы</a></li>
-				<li><a href="#">Психологическая помощь</a></li>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-			</ul>
-		</div>
-		<div class="footer__nav_item">
-			<p class="footer__nav_acc">Психиатрическая помощь</p>
-			<ul>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-				<li><a href="#">Лечение бессонницы</a></li>
-				<li><a href="#">Психологическая помощь</a></li>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-			</ul>
-		</div>
-		<div class="footer__nav_item">
-			<p class="footer__nav_acc">Психические расстройства</p>
-			<ul>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-				<li><a href="#">Лечение бессонницы</a></li>
-				<li><a href="#">Психологическая помощь</a></li>
-				<li><a href="#">Консультация сексолога</a></li>
-				<li><a href="#">Психолог сексолог</a></li>
-			</ul>
-		</div>
-		<div class="footer__nav_item footer__nav_item-menu">
-			<ul>
-				<li><a href="#">О клинике</a></li>
-				<li><a href="#">FAQ</a></li>
-				<li><a href="#">Отзывы</a></li>
-				<li><a href="#">Врачи</a></li>
-				<li><a href="#">Услуги</a></li>
-				<li><a href="#">Контакты</a></li>
-				<li><a href="#">Статьи</a></li>
-				<li><a href="#">Цены</a></li>
-				<li><a href="#">Акции</a></li>
-			</ul>
-		</div>
-
-
-	</nav>
-
-
-
-
-
-
-
-
-
-
-	<li><a href="<?= $item['LINK'] ?>"><?= $item['TEXT'] ?></a></li>
-<? endforeach ?>

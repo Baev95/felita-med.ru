@@ -3,8 +3,8 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Отзывы о прохождении лечения");
 ?>
 <? $APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"reviews_list", 
+	"bitrix:news.list",
+	"reviews_list",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.M.Y",
 		"ADD_SECTIONS_CHAIN" => "N",
@@ -71,4 +71,9 @@ $APPLICATION->SetTitle("Отзывы о прохождении лечения");
 	false
 );
 ?>
+
+<?
+//$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_review.php', array('data' => $arData), array('SHOW_BORDER' => false));
+?>
+
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

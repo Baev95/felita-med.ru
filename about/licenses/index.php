@@ -1,8 +1,14 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Лицензии");
-?><?$APPLICATION->IncludeComponent("bitrix:news.list", "licenses_list", Array(
-	"COMPONENT_TEMPLATE" => ".default",
+?>
+
+<?
+$APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"licenses_list",
+	array(
+		"COMPONENT_TEMPLATE" => ".default",
 		"IBLOCK_TYPE" => "gallery",	// Тип информационного блока (используется только для проверки)
 		"IBLOCK_ID" => "9",	// Код информационного блока
 		"NEWS_COUNT" => "20",	// Количество новостей на странице
@@ -63,4 +69,6 @@ $APPLICATION->SetTitle("Лицензии");
 		"MESSAGE_404" => "",	// Сообщение для показа (по умолчанию из компонента)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);
+?>
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

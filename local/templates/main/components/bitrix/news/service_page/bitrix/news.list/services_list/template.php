@@ -112,53 +112,47 @@ switch ($arParams['CUSTOM']):
 		break;
 	default:  // Для страницы  
 	?>
-		<section class="services section-offset">
+
+		<section class="linking section-offset">
 			<div class="container">
 				<?php
-				$sections = CIBlockSection::GetList(['SORT' => 'ASC'], ['IBLOCK_ID' => 5, 'ACTIVE' => 'Y'], true, ['ID', 'NAME']);
+				$sections = CIBlockSection::GetList(['SORT' => 'ASC'], ['IBLOCK_ID' => 5, 'ACTIVE' => 'Y'], true, ['ID', 'NAME', 'ELEMENT_CNT']);
+				$section_titles = [];
 				while ($section = $sections->GetNext()):
 					if ($section['ELEMENT_CNT'] > 0) :
-						$section_titles[$section['ID']] = $section['NAME'];
+						$section_titles[$section['ID']]['NAME'] = $section['NAME'];
+						$section_titles[$section['ID']]['HTML'] = '';
+						$section_titles[$section['ID']]['HTML'] .= <<<HTML
+          <div class="linking__block">
+            <h2 class="title-h2 linking__title">{$section_titles[$section['ID']]['NAME']}</h2>
+            <div class="linking__inner">
+        HTML;
+						foreach ($arResult["ITEMS"] as $arItem):
+							if ($arItem['IBLOCK_SECTION_ID'] == $section['ID']) {
+								$section_titles[$section['ID']]['HTML'] .= <<<HTML
+              <div class="linking__item">
+                <p class="linking__item-title">{$arItem['NAME']}</p>
+                <div class="linking__item-bottom">
+                  <p class="linking__item-price">{$arItem['PROPERTIES']['PRICE']['VALUE']}</p>
+                  <a href="{$arItem['DETAIL_PAGE_URL']}" class="btn-circle linking__btn"></a>
+                </div>
+              </div>
+            HTML;
+							}
+						endforeach;
+						$section_titles[$section['ID']]['HTML'] .= <<<HTML
+            </div>
+          </div>
+        HTML;
 					endif;
 				endwhile;
-				$current_section_id = null;
-				foreach ($arResult["ITEMS"] as $arItem):
-					if ($current_section_id !== $arItem['IBLOCK_SECTION_ID']) :
-						if ($current_section_id !== null) :
-							$arr_sections_output[$current_section_id] .= <<<HTML
-							</ul>
-						</div>
-						HTML;
-						endif;
-						$current_section_id = $arItem['IBLOCK_SECTION_ID'];
-						$arr_sections_output[$current_section_id] = <<<HTML
-						<div class="services__category">
-							<p class="services__category_title">{$section_titles[$current_section_id]}</p>
-							<ul>
-						HTML;
-					endif;
-					$arr_sections_output[$current_section_id] .= <<<HTML
-						<li class="search-page-item">
-							<a href="{$arItem['DETAIL_PAGE_URL']}">
-							<p class="services__category_name search-page-name">{$arItem['NAME']}</p>
-							<div class="services__category_price">
-								<p>{$arItem['PROPERTIES']['PRICE']['VALUE']}</p> 
-								<div class="services__category_btn-circle btn-circle"></div>
-							</div>
-							</a>
-						</li>
-					HTML;
-				endforeach;
-				if ($current_section_id !== null) :
-					$arr_sections_output[$current_section_id] .= <<<HTML
-					</ul>
-				</div>
-				HTML;
-				endif;
-				echo implode("", $arr_sections_output);
+				foreach ($section_titles as $section) {
+					echo $section['HTML'];
+				}
 				?>
 			</div>
 		</section>
+
 <? break;
 endswitch;
 ?>

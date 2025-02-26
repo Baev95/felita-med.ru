@@ -14,34 +14,34 @@ $aMenuLinks = array(
         array(),
         ""
     ),
-    array(
-        "Вакансии клиники",
-        "/about/jobs/",
-        array(),
-        array(),
-        ""
-    ),
-    array(
-        "Юридические документы",
-        "/about/legal-docs/",
-        array(),
-        array(),
-        ""
-    ),
-    array(
-        "Лицензии",
-        "/about/licenses/",
-        array(),
-        array(),
-        ""
-    ),
-    array(
-        "Вопросы и ответы",
-        "/about/faq/",
-        array(),
-        array(),
-        ""
-    ),
+    // array(
+    //     "Вакансии клиники",
+    //     "/about/jobs/",
+    //     array(),
+    //     array(),
+    //     ""
+    // ),
+    // array(
+    //     "Юридические документы",
+    //     "/about/legal-docs/",
+    //     array(),
+    //     array(),
+    //     ""
+    // ),
+    // array(
+    //     "Лицензии",
+    //     "/about/licenses/",
+    //     array(),
+    //     array(),
+    //     ""
+    // ),
+    // array(
+    //     "Вопросы и ответы",
+    //     "/about/faq/",
+    //     array(),
+    //     array(),
+    //     ""
+    // ),
     array(
         "Специалисты",
         "/doctors/",

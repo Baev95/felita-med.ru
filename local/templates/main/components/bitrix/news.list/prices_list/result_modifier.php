@@ -12,8 +12,9 @@
 /** @var CBitrixComponent $component */
 
 $this->setFrameMode(true);
-
+$arResult['TAB_BUTTONS'] = [];
 foreach ($arResult["ITEMS"] as &$arItem) {
+    $arResult['TAB_BUTTONS'][$arItem['ID']] = $arItem['NAME'];
     if (!empty($arItem["PROPERTIES"]["PRICES"]["VALUE"])) {
         $arItem["PRICES"] = [];
         foreach ($arItem["PROPERTIES"]["PRICES"]["VALUE"] as $price_list) {

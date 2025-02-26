@@ -39,9 +39,6 @@ while ($arData = $rsData->Fetch()): ?>
 		</div>
 	</section>
 
-	<?
-	$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form-white.php', array('data' => $arData), array('SHOW_BORDER' => false));
-	?>
 <? endwhile ?>
 
 

@@ -4,8 +4,8 @@ $APPLICATION->SetTitle("Акции клиники");
 ?>
 <?
 $APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"stocks_list", 
+	"bitrix:news.list",
+	"stocks_list",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "N",
@@ -70,6 +70,10 @@ $APPLICATION->IncludeComponent(
 	),
 	false
 );
+?>
+
+<?
+$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_white.php', array('data' => $arData), array('SHOW_BORDER' => false));
 ?>
 
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

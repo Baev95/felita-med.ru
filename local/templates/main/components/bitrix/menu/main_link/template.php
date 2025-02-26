@@ -14,14 +14,10 @@
 $this->setFrameMode(true);
 ?>
 <? foreach ($arResult as $item) : ?>
-
-	<? //var_dump($item) 
-	?>
-
 	<? if ($item["DEPTH_LEVEL"] == 1) : ?>
 		<? if ($item['IS_PARENT']) : ?>
 			<li class="header__nav_item header__nav_about hide-item">
-				<button class="hide-item__link">О клинике</button>
+				<button class="hide-item__link"><?= $item['TEXT'] ?></button>
 				<div class="header__submenu submenu-3">
 					<ul>
 						<? foreach ($arResult as $sub_item) : ?>
