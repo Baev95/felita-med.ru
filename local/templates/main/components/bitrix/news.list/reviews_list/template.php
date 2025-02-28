@@ -1,20 +1,23 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <?
-switch ($arParams['CUSTOM']):
-	case "services": // Для страницы услуг 
+switch ($arParams['WHERE']):
+	case "SERVICES": // Для страницы услуг 
 ?>
-		<section class="reviews">
+		<section class="reviews section-offset">
 			<div class="container">
 				<div class="section__flex">
 					<div class="section__top reviews__top">
 						<h2 class="title-h2">Отзывы о прохождении лечения</h2>
-						<a href="#" class="btn-arrow reviews__btn section__btn">Все отзывы</a>
+						<a href="#" class="tertiary-btn reviews__btn section__btn">Все отзывы</a>
 					</div>
+
 
 					<div class="section__inner">
 						<div class="reviews__cards">
-							<div class="reviews__swiper swiper reviews4Swiper">
+							<div class="reviews__swiper swiper reviewsSwiper">
 								<div class="swiper-wrapper">
+
+
 									<?
 									foreach ($arResult["ITEMS"] as $arItem):
 										$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
@@ -23,26 +26,29 @@ switch ($arParams['CUSTOM']):
 										<div class="reviews__swiper-slide swiper-slide">
 											<div class="reviews__card">
 												<div class="reviews__card_inner">
-													<div class="reviews__card_top">
+													<div class="reviews__card_info">
 														<div class="reviews__card_fio">
 															<p><?= $arItem['NAME'] ?>, <?= $arItem['AGE'] . " " . $arResult['DECLENSION']->get($arItem['AGE']); ?></p>
 															<p><?= $arItem['CITY'] ?></p>
 														</div>
-														<? if ($arItem['STARS']): ?>
-															<div class="reviews__card_rating">
-																<div class="reviews__card_stars">
-																	<?
-																	for ($i = 0; $i < 5; $i++): ?>
-																		<span class="<?= $i < $arItem['STARS'] ? 'reviews__card_star-active' : 'reviews__card_star' ?>">
-																			<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-																				<path d="M10.4755 1.58156L11.9941 6.25532C12.1949 6.87336 12.7709 7.2918 13.4207 7.2918H18.335C18.8194 7.2918 19.0207 7.9116 18.6289 8.1963L14.6531 11.0848C14.1274 11.4668 13.9074 12.1439 14.1082 12.7619L15.6268 17.4357C15.7765 17.8963 15.2493 18.2794 14.8574 17.9947L10.8817 15.1061C10.3559 14.7242 9.64405 14.7242 9.11832 15.1061L5.14258 17.9947C4.75073 18.2794 4.22349 17.8963 4.37316 17.4357L5.89176 12.7619C6.09257 12.1439 5.87258 11.4668 5.34685 11.0848L1.37111 8.1963C0.979256 7.9116 1.18064 7.2918 1.66501 7.2918H6.57929C7.22913 7.2918 7.80506 6.87335 8.00587 6.25532L9.52447 1.58156C9.67415 1.1209 10.3259 1.12091 10.4755 1.58156Z" stroke="#FFDD99" fill="#FFDD99" />
-																			</svg>
-																		</span>
-																	<? endfor; ?>
-																</div>
-																<p><?= $arItem['DATE_CREATE'] ?></p>
+
+														<div class="reviews__card_right">
+															<div class="reviews__card_stars">
+
+																<?
+																for ($i = 0; $i < 5; $i++): ?>
+																	<span class="<?= $i < $arItem['STARS'] ? 'reviews__card_star-active' : 'reviews__card_star' ?>">
+																		<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path d="M9.04894 1.42705C9.3483 0.505741 10.6517 0.50574 10.9511 1.42705L12.4697 6.10081C12.6035 6.51284 12.9875 6.7918 13.4207 6.7918H18.335C19.3037 6.7918 19.7065 8.03141 18.9228 8.60081L14.947 11.4894C14.5966 11.744 14.4499 12.1954 14.5838 12.6074L16.1024 17.2812C16.4017 18.2025 15.3472 18.9686 14.5635 18.3992L10.5878 15.5106C10.2373 15.256 9.7627 15.256 9.41221 15.5106L5.43648 18.3992C4.65276 18.9686 3.59828 18.2025 3.89763 17.2812L5.41623 12.6074C5.55011 12.1954 5.40345 11.744 5.05296 11.4894L1.07722 8.60081C0.293507 8.03141 0.696283 6.7918 1.66501 6.7918H6.57929C7.01252 6.7918 7.39647 6.51284 7.53035 6.10081L9.04894 1.42705Z" fill="#FFF089" />
+																		</svg>
+																	</span>
+
+																<? endfor; ?>
+
 															</div>
-														<? endif; ?>
+
+															<p class="reviews__card_publication"><?= $arItem['DATE_CREATE'] ?></p>
+														</div>
 													</div>
 
 													<div class="reviews__card_main">
@@ -51,20 +57,26 @@ switch ($arParams['CUSTOM']):
 													</div>
 												</div>
 
-												<div class="reviews__card_bottom">
+												<div class="reviews__card_answer">
 													<p><?= $arItem['TEXT_DOCTOR'] ?></p>
-													<div class="reviews__card_doctor">
+													<div class="reviews__card_answered">
 														<p><?= GetMessage('DOCTOR_COMMENT') ?></p>
 														<p><?= $arItem['DOCTOR_NAME'] ?></p>
 													</div>
 												</div>
 											</div>
 										</div>
+
 									<? endforeach; ?>
+
+
 								</div>
 							</div>
 						</div>
-						<div class="reviews__swiper-pagination swiper-pagination"></div>
+						<div class="reviews__swiper-btns swiper-btns">
+							<button class="reviews__swiper-button-prev swiper-button-prev"></button>
+							<button class="reviews__swiper-button-next swiper-button-next"></button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -147,11 +159,6 @@ switch ($arParams['CUSTOM']):
 				</div>
 			</div>
 		</section>
-
-
-
-
-
 
 
 

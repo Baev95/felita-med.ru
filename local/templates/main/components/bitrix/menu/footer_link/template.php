@@ -145,6 +145,9 @@ HTML;
 		}
 	endforeach;
 	$about .=  <<<HTML
+					<li>
+				<a href="/services/">Услуги</a>
+				</li>
 					$other
 				</ul>
 			</div>

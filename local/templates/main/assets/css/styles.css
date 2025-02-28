@@ -907,7 +907,8 @@ select,
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url(./../img/icons/arrow-bottom.svg) no-repeat right;
+  background: url(/local/templates/main/images/icons/arrow-bottom.svg) no-repeat
+    right;
   background-position-x: calc(100% - 20px);
   background-position-y: calc(100% - 18px);
   transition: all 0.3s ease;
@@ -4746,7 +4747,7 @@ main.shifted {
   border-radius: 30px;
   background: var(--svetlo-korichnevyy-2);
   overflow: hidden;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -4792,7 +4793,7 @@ main.shifted {
 }
 .reviews__card_publication::before {
   display: inline-block;
-  content: url("./../img/icons/calendar-2.svg");
+  content: url("/local/templates/main/images/icons/calendar-2.svg");
   width: 18px;
   height: 20px;
   margin-right: 8px;
@@ -6445,8 +6446,8 @@ main.shifted {
   width: 16px;
   height: 16px;
   max-height: 16px;
-  background: url("./../img/breadcrumbs/home.svg") no-repeat center
-    center/contain;
+  background: url("/local/templates/main/images/breadcrumbs/home.svg") no-repeat
+    center center/contain;
 }
 
 .breadcrumbs li:last-child::after {
@@ -6922,7 +6923,7 @@ main.shifted {
 /* Navigation */
 .navigation__inner-4 {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   padding: 60px;
   border-radius: 20px;
   display: flex;
@@ -7107,7 +7108,8 @@ main.shifted {
   left: 0;
   width: 14px;
   height: 16px;
-  background: url("./../img/icons/doctor.svg") no-repeat center center/cover;
+  background: url("/local/templates/main/images/icons/doctor.svg") no-repeat
+    center center/cover;
 }
 
 .doc-check__stage-4 {
@@ -7121,7 +7123,8 @@ main.shifted {
   left: 0;
   width: 16px;
   height: 16px;
-  background: url("./../img/icons/calendar.svg") no-repeat center center/cover;
+  background: url("/local/templates/main/images/icons/calendar.svg") no-repeat
+    center center/cover;
 }
 
 /* Navigation media */
@@ -8629,7 +8632,8 @@ main.shifted {
   height: 50px;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  background: url("./../img/help/tour3D.svg") no-repeat center center/cover;
+  background: url("/local/templates/main/images/help/tour3D.svg") no-repeat
+    center center/cover;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 3;
@@ -9178,7 +9182,7 @@ main.shifted {
   color: var(--tekst-svetlyy);
 }
 .popup-change-response__wrapper p::before {
-  content: url("./../img/popups/popup-call-1-ok.svg");
+  content: url("/local/templates/main/images/popups/popup-call-1-ok.svg");
 }
 .popup-change-response__btn {
   border-top: 1px solid var(--liniya);
@@ -9191,11 +9195,11 @@ main.shifted {
 }
 
 .popup[data-target="popup-change-ok"] p::before {
-  content: url("./../img/popups/popup-call-1-ok.svg");
+  content: url("/local/templates/main/images/popups/popup-call-1-ok.svg");
 }
 
 .popup[data-target="popup-change-error"] p::before {
-  content: url("./../img/popups/popup-call-1-error.svg");
+  content: url("/local/templates/main/images/popups/popup-call-1-error.svg");
 }
 .popup[data-target="popup-change-error"] .popup-change-response__btn {
   display: none;
@@ -9294,7 +9298,7 @@ main.shifted {
   gap: 8px;
 }
 .popup-city__city-active::before {
-  content: url("./../img/icons/location-white.svg");
+  content: url("/local/templates/main/images/icons/location-white.svg");
   width: 18px;
   height: 18px;
 }
@@ -9349,14 +9353,14 @@ main.shifted {
   gap: 10px;
 }
 .popup-city__list_result li a span:first-child::before {
-  content: url("./../img/icons/location.svg");
+  content: url("/local/templates/main/images/icons/location.svg");
 }
 .popup-city__list_result li a span:last-child {
   font-size: 14px;
   color: var(--korichnevyy);
 }
 .popup-city__no-results-message::before {
-  content: url("./../img/icons/no-location-1.svg");
+  content: url("/local/templates/main/images/icons/no-location-1.svg");
 }
 .popup-city__close {
   width: 34px;
@@ -9589,3 +9593,11 @@ main.shifted {
     right: -20px;
   }
 }
+
+.swiper {
+  height: auto;
+}
+.swiper-wrapper {
+  height: auto;
+}
+

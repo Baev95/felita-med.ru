@@ -46,13 +46,13 @@ foreach ($arResult["ITEMS"] as $arItem) {
                 HTML;
             } else {
                 $html .= <<<HTML
-                <a href="$photo" class="page-gallery__image" data-fancybox="gallery-$i">
-                    <picture>
-                        <source srcset="$photo" type="image/webp">
-                        <img src="$photo" loading="lazy">
-                    </picture>
-                    $desc
-                </a>
+                    <a href="$photo" class="gallery__image rotate-item animation-item  img-animation" data-fancybox="gallery">
+                        <picture class="gallery__picture">
+                            <source srcset="$photo" type="image/webp">
+                            <img src="$photo" loading="lazy">
+                        </picture>
+                        $desc
+                    </a>
             HTML;
             }
         }

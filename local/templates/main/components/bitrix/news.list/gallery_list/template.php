@@ -52,37 +52,41 @@ switch ($arParams['CUSTOM']):
 
 
 
-		<section class="page-gallery section-offset">
+
+
+
+
+
+		<section class="gallery section-offset">
 			<div class="container">
+
 				<div class="tab">
-					<div class="page-gallery__top">
-						<div class="page-gallery__tab_btns">
-							<?
-							$index_id = '';
-							foreach ($arResult['TAB_BUTTONS'] as $index => $button):
-								$index_id = $index == 0 ? $button['ID'] : $index_id; ?>
-								<button class="page-gallery__tab_btn tab__btn <?= $index == 0 ? "tab__btn--active" : "" ?>" data-id="<?= $button['ID'] ?>">
-									<?= $button['NAME'] ?>
-								</button>
-							<? endforeach; ?>
-						</div>
-					</div>
-					<div class="tab-contents">
-						<? foreach ($arResult['ITEMS_HTML'] as $index => $html): ?>
-							<div class="tabcontent <?= $index == $index_id ? "tabcontent--active" : "" ?>" data-id="<?= $index ?>">
-								<div class="page-gallery__images">
-									<?= $html ?>
-								</div>
-							</div>
+
+					<div class="gallery__tab_btns tab__btns-acc">
+						<?
+						$index_id = '';
+						foreach ($arResult['TAB_BUTTONS'] as $index => $button):
+							$index_id = $index == 0 ? $button['ID'] : $index_id; ?>
+							<button class="tablinks gallery__tab_btn tab__btn-acc tab__btn<?= $index == 0 ? " active" : "" ?>" data-id="<?= $button['ID'] ?>">
+								<?= $button['NAME'] ?>
+								<div class="gallery__btn-arrow btn-arrow"></div>
+							</button>
 						<? endforeach; ?>
 					</div>
+
+
+					<? foreach ($arResult['ITEMS_HTML'] as $index => $html): ?>
+						<div class="tabcontent<?= $index == $index_id ? " active" : "" ?>" data-id="<?= $index ?>">
+							<div class="gallery-page__cards gallery__cards">
+								<?= $html ?>
+							</div>
+						</div>
+					<? endforeach; ?>
+
 				</div>
+
 			</div>
 		</section>
-
-
-
-
 
 <?
 		break;

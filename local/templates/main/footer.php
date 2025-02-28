@@ -170,7 +170,7 @@ while ($arData = $rsData->Fetch()): ?>
 
 				<div class="footer__bottom footer__separator">
 					<div class="footer__bottom_links">
-						<a href="#">Карта сайта</a>
+						<a href="/karta-sayta">Карта сайта</a>
 						<a href="#">Политика конфиденциальности</a>
 						<a href="#">Пользовательское соглашение</a>
 						<button class="footer__top_btn-eye--mobile" data-path="popup-change">

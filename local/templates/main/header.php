@@ -27,9 +27,8 @@ while ($arData = $rsData->Fetch()): ?>
 		<link rel='icon' href='<?= SITE_TEMPLATE_PATH ?>/images/icons/favicon.png' type='image/png' sizes='32x32'>
 		<link rel='shortcut con' href='<?= SITE_TEMPLATE_PATH ?>/images/icons/favicon.ico' type='image/png' sizes='16x16'>
 		<?
-		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/swiper.min.css');
+		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/swiper.css');
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/fancybox.min.css');
-		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/build/styles.css');
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/styles.css');
 		Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/styles.css');
 		Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/build/swiper-bundle.min.js');
@@ -392,78 +391,67 @@ while ($arData = $rsData->Fetch()): ?>
 				</div>
 				<style>
 					main.main {
-						margin-top: 250px;
+						margin-top: 200px;
 					}
 				</style>
 				<?/*
-			<div class="plashka header__discount">
-				<div class="container">
-					<div class="header__discount_row">
-						<div class="header__discount_text">
-							<img src="<?= SITE_TEMPLATE_PATH ?>/images/icons/lightning.svg" alt="stock">
-							<p>Забронируйте скидку 15% на лечение алкоголизма методом Довженко до <span class="stock-future-js">28 июля</span>.
-								Осталось: <span class="stock-date-js">4д: 13ч: 28 мин: 49 сек</span></p>
-						</div>
+				<div class="plashka header__discount">
+					<div class="container">
+						<div class="header__discount_row">
+							<div class="header__discount_text">
+								<img src="<?= SITE_TEMPLATE_PATH ?>/images/icons/lightning.svg" alt="stock">
+								<p>Забронируйте скидку 15% на лечение алкоголизма методом Довженко до <span class="stock-future-js">28 июля</span>.
+									Осталось: <span class="stock-date-js">4д: 13ч: 28 мин: 49 сек</span></p>
+							</div>
 
-						<div class="header__discount_btns">
-							<a href="#" class="header__discount_more"><?= GetMessage(name: "DETAILED") ?></a>
-							<button class="header__discount_close"><span><?= GetMessage(name: "CLOSE") ?></span></button>
+							<div class="header__discount_btns">
+								<a href="#" class="header__discount_more"><?= GetMessage(name: "DETAILED") ?></a>
+								<button class="header__discount_close"><span><?= GetMessage(name: "CLOSE") ?></span></button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		*/ ?>
+*/ ?>
 			</header>
 
 			<main class="main">
 
-				<? if ($APPLICATION->GetCurDir() !== '/') : ?>
+				<?
+				$currentDir = $APPLICATION->GetCurDir();
+
+				// Проверяем, что текущий путь не является 404, главной страницей или текущим разделом для услуг, статей и докторов,
+				// и если он не является главным по этим разделам
+				if (
+					http_response_code() != '404' &&
+					$APPLICATION->GetCurDir() !== '/' &&
+					!(strpos($currentDir, '/services/') === 0 && $currentDir !== '/services/') &&
+					!(strpos($currentDir, '/articles/') === 0 && $currentDir !== '/articles/') &&
+					!(strpos($currentDir, '/doctors/') === 0 && $currentDir !== '/doctors/')
+				) : ?>
+
 					<div class="page-top section-offset">
 						<div class="container">
 							<?
-							$status = http_response_code();
+							$APPLICATION->IncludeComponent(
+								"bitrix:breadcrumb",
+								".default",
+								array(
+									"PATH" => "",
+									"SITE_ID" => "s1",
+									"START_FROM" => "0",
+									"COMPONENT_TEMPLATE" => ".default"
+								),
+								false
+							);
+							?>
 
-							if ($status !== 404) {
-								$APPLICATION->IncludeComponent(
-									"bitrix:breadcrumb",
-									".default",
-									array(
-										"PATH" => "",
-										"SITE_ID" => "s1",
-										"START_FROM" => "0",
-										"COMPONENT_TEMPLATE" => ".default"
-									),
-									false
-								);
-							}
-
-							$show_title = false;
-							$currentDir = $APPLICATION->GetCurDir();
-							if ($currentDir === '/articles/' || $currentDir === '/services/' || $currentDir === '/doctors/') {
-								$show_title = true;
-							} elseif (strpos($currentDir, '/articles/') === 0 || strpos($currentDir, '/services/') === 0 || strpos($currentDir, '/doctors/') === 0) {
-								$show_title = false;
-							} else {
-								$show_title = true;
-							}
-
-							if ($show_title) : ?>
-								<h1 class='title-h1 page-top__title'><?php $APPLICATION->ShowTitle(false); ?></h1>
-							<?php endif; ?>
-							<!-- 
-						<ul class="breadcrumbs">
-							<li><a href="/">Главная</a></li>
-							<li>Акции</li>
-						</ul> -->
-
+							<h1 class="title-h1 page-top__title"><?= $APPLICATION->ShowTitle(false); ?></h1>
 						</div>
 						<picture class="page-top__bg">
 							<source srcset="<?= SITE_TEMPLATE_PATH ?>/images/breadcrumbs/breadcrumbs-bg.webp" type="image/webp" />
 							<img src="<?= SITE_TEMPLATE_PATH ?>/images/breadcrumbs/breadcrumbs-bg.jpg" alt="background" />
 						</picture>
 					</div>
+				<? endif; ?>
 
-				<?
-				endif;
-				?>
 			<? endwhile ?>

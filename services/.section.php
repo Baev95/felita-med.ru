@@ -1,6 +1,5 @@
 <?
-$sSectionName = "Услуги";
-$arDirProperties = Array(
+$sSectionName = "Страница услуг";
+$arDirProperties = array(
    "TITLE" => "Направления деятельности клиники"
 );
-?>
