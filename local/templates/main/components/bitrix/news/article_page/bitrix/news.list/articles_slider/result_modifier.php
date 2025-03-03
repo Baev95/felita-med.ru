@@ -15,19 +15,13 @@
 use Bitrix\Main\Grid\Declension;
 
 $this->setFrameMode(true);
-
-// Инициализация склонения
 $declension = new Declension('год', 'года', 'лет');
 $arResult['DECLENSION'] = $declension;
-
-// Получение активных разделов
 $sections = CIBlockSection::GetList(['SORT' => 'ASC'], ['IBLOCK_ID' => 5, 'ACTIVE' => 'Y'], true, ['ID', 'NAME']);
 $arResult['SECTIONS'] = [];
 while ($arSection = $sections->GetNext()) {
     $arResult['SECTIONS'][$arSection['ID']] = $arSection['NAME'];
 }
-
-// Подготовка кнопок для табов
 $arResult['TAB_BUTTONS'] = [];
 $i = 0;
 foreach ($arResult["ITEMS"] as $arItem) {
@@ -40,9 +34,16 @@ foreach ($arResult["ITEMS"] as $arItem) {
     ];
 }
 
-// Подготовка HTML для статей
 $arResult['ITEMS_HTML'] = [];
 $j = 0;
+
+if ($arParams["WHERE"] == "VRACH") {
+    $filterValue = $arParams["WHAT"];
+    $arResult["ITEMS"] = array_filter($arResult["ITEMS"], function ($arItem) use ($filterValue) {
+        return $arItem["PROPERTIES"]["DOCTOR_WROTE"]["VALUE"] == $filterValue; // Замените 'PROPERTY_CODE' на нужный код свойства
+    });
+}
+
 foreach ($arResult["ITEMS"] as $arItem) {
     $service_value = $arItem['PROPERTIES']['SERVICES']['VALUE'];
     $preview_picture = $arItem['PREVIEW_PICTURE']['SRC'];
@@ -76,7 +77,6 @@ foreach ($arResult["ITEMS"] as $arItem) {
     $arResult['ITEMS_HTML'][$service_value] .= $item_html;
 }
 
-// Упорядочивание ITEMS_HTML по TAB_BUTTONS
 $sortedItemsHtml = [];
 foreach ($arResult['TAB_BUTTONS'] as $button) {
     $sortedItemsHtml[] = $arResult['ITEMS_HTML'][$button['ID']];

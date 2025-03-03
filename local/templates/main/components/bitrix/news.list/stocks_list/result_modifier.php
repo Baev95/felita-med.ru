@@ -36,7 +36,25 @@ foreach ($arResult["ITEMS"] as $arItem) {
 
     $date = $arItem['DATE_ACTIVE_TO'] ? $data_html : "";
 
-    $item_html = <<<HTML
+
+
+    if ($arParams['WHERE']) {
+        $item_html = <<<HTML
+                <div class="stocks__swiper-slide swiper-slide">
+                    <div class="stocks__card change-item">
+                        <div class="stocks__card_inner">
+                            <div class="stocks__card_text">
+                                <p class="stocks__card_title change-item__title">{$arItem['NAME']}</p>
+                                <p class="stocks__card_description">{$arItem['PREVIEW_TEXT']}</p>
+                            </div>
+                        </div>
+                        <button class="btn-arrow stocks__card_btn popup-btn change-item__btn" data-path="popup-change"> $sign_up</button>
+                    </div>
+                </div>
+    HTML;
+    } else {
+
+        $item_html = <<<HTML
                     <div class="stocks-page__card">
                         <div class="stocks-page__card_main">
                             <div class="stocks-page__card_titles">
@@ -52,6 +70,9 @@ foreach ($arResult["ITEMS"] as $arItem) {
                         </picture>
                     </div>
     HTML;
+    }
+
+
     if ($arItem['DATE_ACTIVE_TO'] && $formattedDate >= $currentData) {
         $arResult['SECTIONS']['TEMPORAL']['NAME'] = GetMessage('TEMPORAL');
         $arResult['SECTIONS']['TEMPORAL']['HTML'] .= $item_html;

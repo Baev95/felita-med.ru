@@ -40,8 +40,8 @@ switch ($arParams['WHERE']):
 										$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 
 
-										$work_experience = preg_replace('/[^0-9]/', '', $arItem['PROPERTIES']['WORK_EXPERIENCE']['VALUE']);
-
+										$work_experience = preg_replace('/[^0-9]/', '',  $arItem['PROPERTIES']['WORK_EXPERIENCE']['VALUE']);
+										$work_experience = (int) $work_experience;
 									?>
 										<div class="doctors__swiper-slide swiper-slide">
 											<div class="doctors__card change-item">
@@ -102,6 +102,8 @@ switch ($arParams['WHERE']):
 					foreach ($arResult["ITEMS"] as $arItem) :
 						$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 						$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+						$work_experience = preg_replace('/[^0-9]/', '', $arItem['PROPERTIES']['WORK_EXPERIENCE']['VALUE']);
+						$work_experience = (int) $work_experience;
 					?>
 						<div class="doctors__card change-item">
 							<picture class="doctors__card_photo">

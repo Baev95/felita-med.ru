@@ -1,9 +1,62 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <?
-switch ($arParams['CUSTOM']):
-	case "services": // Для страницы услуг
-	case "main": // Для главной страницы
+switch ($arParams['WHERE']):
+	case "SERVICES": // Для страницы услуг
+	case "MAIN": // Для главной страницы
 ?>
+
+
+
+
+
+
+		<section class="gallery section-offset">
+			<div class="container">
+				<div class="tab gallery__inner">
+					<h2 class="gallery__title title-h2">Фотографии нашей клиники</h2>
+
+					<div class="gallery__tab_btns tab__btns-acc">
+
+
+
+
+						<?
+						$index_id = '';
+						foreach ($arResult['TAB_BUTTONS'] as $index => $button):
+							$index_id = $index == 0 ? $button['ID'] : $index_id; ?>
+							<button class="tablinks gallery__tab_btn tab__btn-acc tab__btn <?= $index == 0 ? "active" : "" ?>" data-id="<?= $button['ID'] ?>">
+								<span><?= $button['NAME'] ?></span>
+								<div class="gallery__btn-arrow btn-arrow"></div>
+							</button>
+						<? endforeach; ?>
+
+					</div>
+
+
+
+					<? foreach ($arResult['ITEMS_HTML'] as $index => $html): ?>
+						<div class="tabcontent <?= $index == $index_id ? "active" : "" ?>" data-id="<?= $index ?>">
+							<div class="gallery__cards">
+								<?= $html ?>
+							</div>
+						</div>
+					<? endforeach; ?>
+
+				</div>
+
+				<a href="#" class="tertiary-btn gallery__btn section__btn">Смотреть больше фото</a>
+			</div>
+		</section>
+
+
+
+
+
+		<?/*
+
+
+
+
 		<section class="gallery section-offset">
 			<div class="container">
 				<div class="section__flex">
@@ -43,7 +96,7 @@ switch ($arParams['CUSTOM']):
 					</div>
 				</div>
 			</div>
-		</section>
+		</section>  */ ?>
 	<?
 		break;
 	default:  // Для страницы статей 

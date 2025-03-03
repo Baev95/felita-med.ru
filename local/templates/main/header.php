@@ -1,5 +1,3 @@
-ТЕСТ
-
 <?
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)	die();
 
@@ -425,8 +423,7 @@ while ($arData = $rsData->Fetch()): ?>
 					http_response_code() != '404' &&
 					$APPLICATION->GetCurDir() !== '/' &&
 					!(strpos($currentDir, '/services/') === 0 && $currentDir !== '/services/') &&
-					!(strpos($currentDir, '/articles/') === 0 && $currentDir !== '/articles/') &&
-					!(strpos($currentDir, '/doctors/') === 0 && $currentDir !== '/doctors/')
+					!(strpos($currentDir, '/articles/') === 0 && $currentDir !== '/articles/')
 				) : ?>
 
 					<div class="page-top section-offset">
@@ -444,8 +441,9 @@ while ($arData = $rsData->Fetch()): ?>
 								false
 							);
 							?>
-
-							<h1 class="title-h1 page-top__title"><?= $APPLICATION->ShowTitle(false); ?></h1>
+							<? if (!(strpos($currentDir, '/doctors/') === 0 && $currentDir !== '/doctors/')) : ?>
+								<h1 class="title-h1 page-top__title"><?= $APPLICATION->ShowTitle(false); ?></h1>
+							<? endif; ?>
 						</div>
 						<picture class="page-top__bg">
 							<source srcset="<?= SITE_TEMPLATE_PATH ?>/images/breadcrumbs/breadcrumbs-bg.webp" type="image/webp" />
@@ -453,5 +451,4 @@ while ($arData = $rsData->Fetch()): ?>
 						</picture>
 					</div>
 				<? endif; ?>
-
 			<? endwhile ?>

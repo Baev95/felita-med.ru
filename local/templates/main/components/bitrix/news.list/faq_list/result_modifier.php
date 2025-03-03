@@ -54,11 +54,11 @@ foreach ($arResult["ITEMS"] as $index => $item) {
         $name = $ar_fields['NAME'];
         $photo = CFile::GetPath($ar_fields['PREVIEW_PICTURE']);
         $post = $ar_properties['POST']['VALUE'];
-        $work_experience = $ar_properties['WORK_EXPERIENCE']['VALUE'];
         $work_experience_text = GetMessage('WORK_EXPERIENCE');
         $doctor_answered_text = GetMessage('DOCTOR_ANSWERED');
-        $declension_year = preg_replace('/[^0-9]/', '', $ar_properties['WORK_EXPERIENCE']['VALUE']);
-
+        $work_experience = preg_replace('/[^0-9]/', '', $ar_properties['WORK_EXPERIENCE']['VALUE']);
+        $work_experience = (int) $work_experience;
+        $work_experience_text = $declension->get($work_experience);
         $site_template_path = SITE_TEMPLATE_PATH;
 
         $itemHtmls[$serviceValue] .= <<<HTML
@@ -93,7 +93,7 @@ foreach ($arResult["ITEMS"] as $index => $item) {
                                     </div>
                                     <div class="faq__editor_item">
                                         <img src="$site_template_path/images/icons/calendar.svg" alt="">
-                    <p>$work_experience_text $work_experience $declension_year</p>												
+                    <p>$work_experience_text $work_experience  $work_experience_text</p>												
                 </div>
                                 </div>
                             </div>
