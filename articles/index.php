@@ -24,7 +24,9 @@ $APPLICATION->SetTitle("Статьи нашей клиники");
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
 		"DETAIL_FIELD_CODE" => array(
 			0 => "SHOW_COUNTER",
-			1 => "",
+			1 => "DATE_CREATE",
+			2 => "TIMESTAMP_X",
+			3 => "",
 		),
 		"DETAIL_PAGER_SHOW_ALL" => "Y",
 		"DETAIL_PAGER_TEMPLATE" => "",
@@ -53,8 +55,13 @@ $APPLICATION->SetTitle("Статьи нашей клиники");
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.M.Y",
 		"LIST_FIELD_CODE" => array(
-			0 => "DATE_ACTIVE_FROM",
-			1 => "",
+			0 => "ID",
+			1 => "CODE",
+			2 => "XML_ID",
+			3 => "NAME",
+			4 => "DATE_CREATE",
+			5 => "TIMESTAMP_X",
+			6 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
 			0 => "",
