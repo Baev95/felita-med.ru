@@ -10,11 +10,7 @@ if ($arParams['WHERE'] == 'SERVICES') : ?>
 					<h2 class="faq__title title-h2">Ответы на частозадаваемые вопросы</h2>
 					<a href="#" class="primary-btn faq__btn section__btn">Смотреть все вопросы</a>
 				</div>
-
-
-
 				<div class="faq__grid">
-
 					<div class="faq__block">
 						<div class="tab">
 

@@ -22,6 +22,11 @@ switch ($arParams['WHERE']):
 									foreach ($arResult["ITEMS"] as $arItem):
 										$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 										$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+
+
+										$arItem['AGE'] = preg_replace('/[^0-9]/', '', $arItem['AGE']);
+										$arItem['AGE'] = (int) $arItem['AGE'];
+
 									?>
 										<div class="reviews__swiper-slide swiper-slide">
 											<div class="reviews__card">
@@ -117,6 +122,9 @@ switch ($arParams['WHERE']):
 						foreach ($arResult["ITEMS"] as $arItem):
 							$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 							$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+							$arItem['AGE'] = preg_replace('/[^0-9]/', '', $arItem['AGE']);
+							$arItem['AGE'] = (int) $arItem['AGE'];
+
 						?>
 							<div class="reviews__card reviews-page__card filter-card quantity-card" data-service="<?= $arItem['SERVICE_CODE'] ?>" data-doctor="<?= $arItem['DOCTOR_CODE'] ?>">
 								<div class="reviews__card_inner">

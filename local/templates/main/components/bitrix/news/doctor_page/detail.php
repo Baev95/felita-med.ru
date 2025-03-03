@@ -69,8 +69,8 @@ $ElementID = $APPLICATION->IncludeComponent(
 		'STRICT_SECTION_CHECK' => $arParams['STRICT_SECTION_CHECK'],
 	],
 	$component
-); ?>
+); ?>	
 
-<?
-$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_6.php', array(), array('SHOW_BORDER' => false));
+<?/*
+$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_6.php', array(), array('SHOW_BORDER' => false));*/
 ?>

@@ -34,9 +34,6 @@ $rsData = $entity_data_class::getList();
 
 while ($arData = $rsData->Fetch()): ?>
 
-
-	?>
-
 	<section class="intro-4 section-offset">
 		<div class="container">
 			<picture class="bg">
@@ -457,6 +454,7 @@ $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_7.php', arr
 								$photo = CFile::GetPath($ar_fields['PREVIEW_PICTURE']);
 								$post = $ar_properties['POST']['VALUE'];
 								$work_experience = preg_replace('/[^0-9]/', '', $ar_properties['WORK_EXPERIENCE']['VALUE']);
+								$work_experience = (int) $work_experience;
 							}
 							?>
 							<a href="#" class="doctor-reviewer-4 doc-check-4">
@@ -488,6 +486,7 @@ $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_7.php', arr
 								$photo = CFile::GetPath($ar_fields['PREVIEW_PICTURE']);
 								$post = $ar_properties['POST']['VALUE'];
 								$work_experience = preg_replace('/[^0-9]/', '', $ar_properties['WORK_EXPERIENCE']['VALUE']);
+								$work_experience = (int) $work_experience;
 							}
 							?>
 							<a href="#" class="doctor-author-4 doc-check-4">
@@ -547,6 +546,7 @@ $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_7.php', arr
 						$photo = CFile::GetPath($ar_fields['PREVIEW_PICTURE']);
 						$post = $ar_properties['POST']['VALUE'];
 						$work_experience = preg_replace('/[^0-9]/', '', $ar_properties['WORK_EXPERIENCE']['VALUE']);
+						$work_experience = (int) $work_experience;
 					}
 					?>
 
