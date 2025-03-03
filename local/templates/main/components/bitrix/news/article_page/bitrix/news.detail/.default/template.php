@@ -97,7 +97,6 @@ while ($arData = $rsData->Fetch()): ?>
 						$ar_properties = $row->GetProperties();
 						$name = $ar_fields['NAME'];
 						$link = $ar_fields["DETAIL_PAGE_URL"];
-						var_dump($link);
 						$photo = CFile::GetPath($ar_fields['PREVIEW_PICTURE']);
 						$post = $ar_properties['POST']['VALUE'];
 						$work_experience = preg_replace('/[^0-9]/', '', $ar_properties['WORK_EXPERIENCE']['VALUE']);

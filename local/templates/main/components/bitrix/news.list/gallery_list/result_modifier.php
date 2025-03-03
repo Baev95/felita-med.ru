@@ -31,18 +31,16 @@ foreach ($arResult["ITEMS"] as $arItem) {
         foreach ($arItem["PROPERTIES"]["PHOTO"]["VALUE"] as $key => $pictures) {
             $photo = CFile::GetPath($pictures);
             $desc = "<p class='page-gallery__label'>{$arItem["PROPERTIES"]["PHOTO"]["DESCRIPTION"][$key]}</p>";
-            if ($arParams['CUSTOM'] === 'main') {
+            if ($arParams['WHERE'] === 'MAIN' || $arParams['WHERE'] === 'SERVICES') {
                 $desc = "<p class='gallery__label'>{$arItem["PROPERTIES"]["PHOTO"]["DESCRIPTION"][$key]}</p>";
                 $html .= <<<HTML
-                    <div class="gallery__swiper-slide swiper-slide">
-                        <a href="$photo" class="gallery__image" data-fancybox="gallery-$i">
+                        <a href="$photo" class="gallery__image rotate-item animation-item  img-animation" data-fancybox="gallery-$i">
                             <picture class="gallery__picture">
                                 <source srcset="$photo" type="image/webp">
                                 <img src="$photo" loading="lazy">
                             </picture>
                             $desc
                         </a>
-                    </div>
                 HTML;
             } else {
                 $html .= <<<HTML

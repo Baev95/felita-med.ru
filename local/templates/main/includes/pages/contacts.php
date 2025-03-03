@@ -7,9 +7,13 @@ Loader::includeModule("highloadblock");
 $entity = HL\HighloadBlockTable::compileEntity(1);
 $entity_data_class = $entity->getDataClass();
 $rsData = $entity_data_class::getList();
-
+$class = "contacts-page section-offset";
+if ($title) {
+    $class = "contacts";
+}
 while ($arData = $rsData->Fetch()): ?>
-    <section class="contacts-page section-offset">
+
+    <section class="<?= $class ?>">
         <div class="container">
             <div class="contacts__info">
                 <div class="contacts__info_line"></div>

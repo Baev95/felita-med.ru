@@ -16,18 +16,27 @@ use Bitrix\Main\Grid\Declension;
 $this->setFrameMode(true);
 
 $sections = CIBlockSection::GetList(['SORT' => 'ASC'], ['IBLOCK_ID' => 5, 'ACTIVE' => 'Y'], true, ['ID', 'NAME']);
+$class = "";
+$name = "Новости нашей клиники";
 while ($arItem = $sections->GetNext()):
 	$arr_section[$arItem['ID']] = $arItem['NAME'];
 endwhile;
+if ($arParams['WHERE'] == 'MAIN') {
+	$class = " articles section-offset";
+}
+if ($arParams["WHERE"] == "VRACH") {
+	$name = "Статьи врача";
+}
 
 if ($arResult["ITEMS"]) {
 
 ?>
-	<section class="articles">
+
+	<section class="articles<?= $class ?>">
 		<div class="container">
 			<div class="section__flex">
 				<div class="section__top articles__top">
-					<h2 class="title-h2">Статьи врача</h2>
+					<h2 class="title-h2"><?= $name ?> </h2>
 					<a href="/articles/" class="tertiary-btn articles__btn section__btn">Все статьи</a>
 				</div>
 

@@ -72,8 +72,4 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 
-<?
-$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_white.php', array('data' => $arData), array('SHOW_BORDER' => false));
-?>
-
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

@@ -37,48 +37,10 @@ if ($arParams['WHERE'] == 'SERVICES') : ?>
 					</div>
 
 					<div class="faq__block faq__block_form">
-						<div class="faq__form">
-							<div class="faq__form_text">
-								<p class="faq__form_title">Не нашли ответа на вопрос? Задайте его нашим специалистам</p>
-								<p class="faq__form_subtitle">Задайте интересующий вас вопрос, и наши врачи на него ответят</p>
-							</div>
-
-							<form action="" class="faq__form_inputs" data-modal-open="open" data-modal-ok=".popup-change-ok .result-wrapper" data-modal-err=".popup-change-error .result-wrapper">
-								<input name='catalogue' type='hidden' value='<?= $current_catalogue["Catalogue_ID"] ?>' />
-								<input name="bitrixID" type="hidden" value='<?= $current_catalogue["BitrixID"] ?>'>
-								<input name='city' type='hidden' value='<?= $current_catalogue["Catalogue_Name"] ?>' />
-								<input name='type' type='hidden' value='request' />
-								<input name='cc' type='hidden' value='2' />
-								<input name='sub' type='hidden' value='8' />
-								<input name='mes' type='hidden' value='22' />
-								<input name="urlMessage" type="hidden" value="">
-								<input name="title_url_message" type="hidden" value="">
-								<div class="input-wrapper">
-									<input type="text" name="name" class="input input-white faq__form_input" placeholder="Имя" required>
-									<button class="input-clear"><img src="assets/img/icons/clear.svg" alt=""></button>
-								</div>
-
-								<div class="input-wrapper">
-									<input type="tel" name="phone" class="input input-white faq__form_input" placeholder="Номер телефона" required>
-									<button class="input-clear"><img src="assets/img/icons/clear.svg" alt=""></button>
-								</div>
-
-								<textarea class="faq__form_textarea textarea textarea-white" placeholder="Вопрос"></textarea>
-
-								<button type="submit" class="primary-btn faq__form_btn request-send-btn"><span>Перезвонить мне</span></button>
-								<p class="politic politic-white faq__form_politic">Мы обеспечиваем полную <a href="#" rel="nofollow">конфиденциальность</a> вашей личности</p>
-							</form>
-						</div>
-
-
+						<?
+						$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_faq.php', array('data' => $arData), array('SHOW_BORDER' => false));
+						?>
 					</div>
-
-
-					<?/*
-					$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_faq.php', array(), array('MODE' => 'html'));*/
-					?>
-
-
 				</div>
 			</div>
 	</section>
@@ -113,40 +75,9 @@ if ($arParams['WHERE'] == 'SERVICES') : ?>
 					</div>
 
 					<div class="faq__block faq__block_form">
-						<div class="faq__form">
-							<div class="faq__form_text">
-								<p class="faq__form_title">Не нашли ответа на вопрос? Задайте его нашим специалистам</p>
-								<p class="faq__form_subtitle">Задайте интересующий вас вопрос, и наши врачи на него ответят</p>
-							</div>
-
-							<form action="" class="faq__form_inputs" data-modal-open="open" data-modal-ok=".popup-change-ok .result-wrapper" data-modal-err=".popup-change-error .result-wrapper">
-								<input name='catalogue' type='hidden' value='<?= $current_catalogue["Catalogue_ID"] ?>' />
-								<input name="bitrixID" type="hidden" value='<?= $current_catalogue["BitrixID"] ?>'>
-								<input name='city' type='hidden' value='<?= $current_catalogue["Catalogue_Name"] ?>' />
-								<input name='type' type='hidden' value='request' />
-								<input name='cc' type='hidden' value='2' />
-								<input name='sub' type='hidden' value='8' />
-								<input name='mes' type='hidden' value='22' />
-								<input name="urlMessage" type="hidden" value="">
-								<input name="title_url_message" type="hidden" value="">
-								<div class="input-wrapper">
-									<input type="text" name="name" class="input input-white faq__form_input" placeholder="Имя" required>
-									<button class="input-clear"><img src="assets/img/icons/clear.svg" alt=""></button>
-								</div>
-
-								<div class="input-wrapper">
-									<input type="tel" name="phone" class="input input-white faq__form_input" placeholder="Номер телефона" required>
-									<button class="input-clear"><img src="assets/img/icons/clear.svg" alt=""></button>
-								</div>
-
-								<textarea class="faq__form_textarea textarea textarea-white" placeholder="Вопрос"></textarea>
-
-								<button type="submit" class="primary-btn faq__form_btn request-send-btn"><span>Перезвонить мне</span></button>
-								<p class="politic politic-white faq__form_politic">Мы обеспечиваем полную <a href="#" rel="nofollow">конфиденциальность</a> вашей личности</p>
-							</form>
-						</div>
-
-
+						<?
+						$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_faq.php', array('data' => $arData), array('SHOW_BORDER' => false));
+						?>
 					</div>
 				</div>
 			</div>
