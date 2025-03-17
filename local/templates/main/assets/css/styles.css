@@ -9600,3 +9600,13 @@ main.shifted {
 .swiper-wrapper {
   height: auto;
 }
+
+#to-top {
+  position: fixed;
+  transition: 0.3s;
+  bottom: 80px;
+  width: 50px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 9999;
+}

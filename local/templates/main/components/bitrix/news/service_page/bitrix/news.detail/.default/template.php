@@ -82,9 +82,9 @@ while ($arData = $rsData->Fetch()): ?>
 
 				<div class="intro-4__main change-item">
 					<div class="intro-4__main_top">
-						<h1 class="intro-4__title title-h1 change-item__title">Лечение алкоголизма методом Довженко в Ростове-на-Дону</h1>
+						<h1 class="intro-4__title title-h1 change-item__title"><?= $arResult['NAME'] ?></h1>
 						<div class="intro-4__main_info">
-							<p class="intro-4__main_subtitle">Наши специализированные программы лечения алкоголизма предлагают комплексный подход, включающий медицинскую поддержку, психологическую терапию и индивидуальные планы реабилитации</p>
+							<p class="intro-4__main_subtitle"><?= $arResult['PREVIEW_TEXT'] ?></p>
 							<div class="intro-4__cards-mobile">
 								<ul>
 									<li>
@@ -496,8 +496,8 @@ $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_7.php', arr
 								</div>
 								<div class="doctor-author__content-4 doc-check__content-4">
 									<picture class="doctor-author__picture-4 doc-check__picture-4">
-										<source srcset="<?= SITE_TEMPLATE_PATH ?>/images/text-block/text-block-editor.webp" type="image/webp">
-										<img src="<?= SITE_TEMPLATE_PATH ?>/images/text-block/text-block-editor.jpg" alt="<?= $name ?>"
+										<source srcset="<?= $photo ?>" type="image/webp">
+										<img src="<?= $photo ?>" alt="<?= $name ?>"
 											class="doctor-author__image-4 doc-check__image-4">
 									</picture>
 									<div class="doctor-author__info-4 doc-check__info-4">
@@ -519,11 +519,22 @@ $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_7.php', arr
 
 			<div class="article__block">
 				<? if ($properties['PHOTO']['VALUE']) : ?>
+
+					<?
+
+					echo '<pre>';
+					//var_dump($properties['PHOTO']);
+
+					echo '</pre>';
+					?>
 					<div class="article__img">
 						<picture>
 							<source srcset="<?= CFile::GetPath($properties['PHOTO']['VALUE'][$i]); ?>" type="image/webp" />
-							<img src="<?= CFile::GetPath($properties['PHOTO']['VALUE'][$i]); ?>" alt="<?= $properties['DESCRIPTION']['VALUE'][$i]; ?>" loading="lazy" />
+							<img src="<?= CFile::GetPath($properties['PHOTO']['VALUE'][$i]); ?>" alt="<?= $properties['PHOTO']['DESCRIPTION'][$i]; ?>" loading="lazy" />
 						</picture>
+						<p style="font-size: 14px;line-height: 130%;color: var(--chernyy---60);margin: 0;">
+							<?= $properties['PHOTO']['DESCRIPTION'][$i]; ?>
+						</p>
 					</div>
 				<? endif; ?>
 
@@ -666,11 +677,13 @@ $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_6_1.php', a
 
 			<div class="article__block">
 				<? if ($properties['PHOTO']['VALUE']) : ?>
-					<div class="text-article__img">
+					<? $i++ ?>
+					<div class="article__img">
 						<picture>
-							<source srcset="<?= CFile::GetPath($properties['PHOTO']['VALUE'][$i]); ?>" type="image/webp" />
-							<img src="<?= CFile::GetPath($properties['PHOTO']['VALUE'][$i]); ?>" alt="<?= $properties['DESCRIPTION']['VALUE'][$i]; ?>" loading="lazy" />
+							<source srcset="<?= CFile::GetPath($properties['PHOTO']['VALUE'][$i]); ?>" type="image/webp">
+							<img src="<?= CFile::GetPath($properties['PHOTO']['VALUE'][$i]); ?>" alt="<?= $properties['PHOTO']['DESCRIPTION'][$i]; ?>" loading="lazy">
 						</picture>
+						<p style="font-size: 14px;line-height: 130%;color: var(--chernyy---60);margin: 0;"><?= $properties['PHOTO']['DESCRIPTION'][$i]; ?></p>
 					</div>
 				<? endif; ?>
 

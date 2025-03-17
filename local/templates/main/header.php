@@ -11,15 +11,28 @@ $entity_data_class = $entity->getDataClass();
 $rsData = $entity_data_class::getList();
 while ($arData = $rsData->Fetch()): ?>
 
-
 	<head>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="robots" content="noindex, nofollow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name='keywords' content='' />
-		<meta name='description' content='' />
+		<meta name='keywords' content='<? $APPLICATION->ShowProperty('keywords'); ?>' />
+		<? if (http_response_code() != '404') : ?>
+			<?
+			$canon_uri = strtok($_SERVER["REQUEST_URI"], "?");
+			$canon = 'https://' . $_SERVER["HTTP_HOST"] . $canon_uri;
+			$canon = str_replace(':443', '', $canon);
+			?>
+			<link rel="canonical" href="<?= $canon ?>">
+			<meta name='description' content='<? $APPLICATION->ShowProperty('description'); ?>' />
+		<? endif; ?>
+
+		<meta property="og:locale" content="ru_RU">
+		<meta property="og:title" content="<? $APPLICATION->ShowTitle(false); ?>" />
+		<meta property="og:description" content="<? $APPLICATION->ShowProperty('description'); ?>" />
+		<meta property="og:url" content="https://<?= $_SERVER['HTTP_HOST']; ?>" />
+		<meta property="og:locale" content="ru_RU">
 
 		<title><? $APPLICATION->ShowTitle(false); ?></title>
 		<link rel='icon' href='<?= SITE_TEMPLATE_PATH ?>/images/icons/favicon.png' type='image/png' sizes='32x32'>
@@ -389,7 +402,7 @@ while ($arData = $rsData->Fetch()): ?>
 				</div>
 				<style>
 					main.main {
-						margin-top: 200px;
+						margin-top: 250px;
 					}
 				</style>
 				<?/*
@@ -416,9 +429,6 @@ while ($arData = $rsData->Fetch()): ?>
 
 				<?
 				$currentDir = $APPLICATION->GetCurDir();
-
-				// Проверяем, что текущий путь не является 404, главной страницей или текущим разделом для услуг, статей и докторов,
-				// и если он не является главным по этим разделам
 				if (
 					http_response_code() != '404' &&
 					$APPLICATION->GetCurDir() !== '/' &&

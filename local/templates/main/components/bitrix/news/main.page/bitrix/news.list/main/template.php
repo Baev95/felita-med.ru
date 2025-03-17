@@ -43,7 +43,6 @@ while ($arData = $rsData->Fetch()): ?>
 			</picture>
 
 			<div class="intro-4__row">
-
 				<div class="intro-4__advantages">
 					<div class="intro-4__labels">
 						<ul>
@@ -235,8 +234,6 @@ while ($arData = $rsData->Fetch()): ?>
 	);
 	?>
 
-
-
 	<?
 	$APPLICATION->IncludeComponent(
 		"bitrix:news",
@@ -392,8 +389,6 @@ while ($arData = $rsData->Fetch()): ?>
 		</div>
 	</section>
 
-
-
 	<section class="advantages section-offset">
 		<div class="container">
 			<picture class="advantages__bg">
@@ -480,11 +475,7 @@ while ($arData = $rsData->Fetch()): ?>
 		</div>
 	</section>
 
-
-
-
 	<?
-
 	$APPLICATION->IncludeComponent(
 		"bitrix:news.list",
 		"prices_list",
@@ -554,9 +545,6 @@ while ($arData = $rsData->Fetch()): ?>
 	);
 	?>
 
-
-
-
 	<section class="guarantees">
 		<div class="container">
 			<div class="section__flex">
@@ -619,17 +607,9 @@ while ($arData = $rsData->Fetch()): ?>
 		</div>
 	</section>
 
-
-
-
-
-
 	<?
-	$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_faq.php', array('data' => $arData), array('SHOW_BORDER' => false));
+	$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/forms/form_main_section_offset.php', array('data' => $arData), array('SHOW_BORDER' => false));
 	?>
-
-
-
 
 	<section class="article section-offset">
 		<div class="container">
@@ -692,22 +672,15 @@ while ($arData = $rsData->Fetch()): ?>
 						</div>
 					</blockquote>
 
-				<? endif; ?>
-
+				<? endif; ?>	
 			</div>
 			<div class="article__block">
 				<? if ($properties['TEXT_2']['~VALUE']) : ?>
 					<?= $properties['TEXT_2']['~VALUE']['TEXT']; ?>
 				<? endif; ?>
 			</div>
-
 		</div>
 	</section>
-
-
-
-
-
 
 	<? $APPLICATION->IncludeComponent(
 		"bitrix:news.list",
@@ -767,11 +740,6 @@ while ($arData = $rsData->Fetch()): ?>
 			"CUSTOM" => "services"
 		)
 	); ?>
-
-
-
-
-
 
 	<? $APPLICATION->IncludeComponent(
 		"bitrix:news.list",
@@ -843,11 +811,6 @@ while ($arData = $rsData->Fetch()): ?>
 		),
 		false
 	); ?>
-
-
-
-
-
 
 	<? $APPLICATION->IncludeComponent(
 		"bitrix:news",
@@ -949,11 +912,6 @@ while ($arData = $rsData->Fetch()): ?>
 		false
 	); ?>
 
-
-
-
-
-
 	<? $APPLICATION->IncludeComponent(
 		"bitrix:news.list",
 		"licenses_list",
@@ -1025,8 +983,6 @@ while ($arData = $rsData->Fetch()): ?>
 		),
 		false
 	); ?>
-
-
 
 	<? $APPLICATION->IncludeComponent(
 		"bitrix:news",
@@ -1128,10 +1084,6 @@ while ($arData = $rsData->Fetch()): ?>
 		false
 	); ?>
 
-
-
-
-
 	<? $APPLICATION->IncludeComponent(
 		"bitrix:news.list",
 		"gallery_list",
@@ -1203,12 +1155,6 @@ while ($arData = $rsData->Fetch()): ?>
 		),
 		false
 	); ?>
-
-
-
-
-
-
 
 	<? $APPLICATION->IncludeComponent(
 		"bitrix:news.list",
@@ -1285,6 +1231,5 @@ while ($arData = $rsData->Fetch()): ?>
 	<?
 	$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/includes/pages/contacts.php', array("title" => true),  array('SHOW_BORDER' => false));
 	?>
-
 
 <? endwhile; ?>

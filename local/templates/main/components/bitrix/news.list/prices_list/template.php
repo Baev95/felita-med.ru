@@ -1,8 +1,12 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
+<style>
+	.prices__table_name {
+		flex: 1 0 30%;
+	}
+</style>
 <?
 switch ($arParams['WHERE']):
 	case "SERVICES": // Для страницы услуг 
-
 ?>
 		<section class="prices section-offset">
 			<div class="container">
@@ -25,8 +29,13 @@ switch ($arParams['WHERE']):
 												<td class="prices__table_name">
 													<span class="search-page-name change-item__title"><?= $price[0] ?></span>
 												</td>
+
 												<td class="prices__table_cost">
-													<p><span>Цена: </span><?= $price[1] ?></p>
+													<p><span>Описание: </span><?= htmlspecialchars($price[1]) ?></p>
+												</td>
+
+												<td class="prices__table_cost">
+													<p><span>Цена: </span><?= $price[2] ?></p>
 												</td>
 												<td class="prices__table_btn">
 													<button class="primary-btn popup-btn change-item__btn" data-path="popup-change">
@@ -46,9 +55,6 @@ switch ($arParams['WHERE']):
 		</section>
 	<?
 		break;
-
-
-
 	case "MAIN": // Для главной странице  
 	?>
 		<?
@@ -87,8 +93,13 @@ switch ($arParams['WHERE']):
 														<td class="prices__table_name">
 															<span class="search-page-name change-item__title"><?= htmlspecialchars($price[0]) ?></span>
 														</td>
+
 														<td class="prices__table_cost">
-															<p><span>Цена: </span><?= htmlspecialchars($price[1]) ?></p>
+															<p><span>Описание: </span><?= htmlspecialchars($price[1]) ?></p>
+														</td>
+
+														<td class="prices__table_cost">
+															<p><span>Цена: </span><?= htmlspecialchars($price[2]) ?></p>
 														</td>
 														<td class="prices__table_btn">
 															<button class="primary-btn popup-btn change-item__btn" data-path="popup-change">
@@ -107,8 +118,6 @@ switch ($arParams['WHERE']):
 				</div>
 			</div>
 		</section><!-- guarantees-3 -->
-
-
 	<?
 		break;
 	default:
@@ -140,8 +149,13 @@ switch ($arParams['WHERE']):
 													<td class="prices__table_name">
 														<span class="search-page-name change-item__title"><?= htmlspecialchars($price[0]) ?></span>
 													</td>
+
 													<td class="prices__table_cost">
-														<p><span>Цена: </span><?= htmlspecialchars($price[1]) ?></p>
+														<p><span>Описание: </span><?= htmlspecialchars($price[1]) ?></p>
+													</td>
+
+													<td class="prices__table_cost">
+														<p><span>Цена: </span><?= htmlspecialchars($price[2]) ?></p>
 													</td>
 													<td class="prices__table_btn">
 														<button class="primary-btn popup-btn change-item__btn" data-path="popup-change">
@@ -159,7 +173,6 @@ switch ($arParams['WHERE']):
 				</div>
 			</div>
 		</section>
-
 <?
 		break;
 endswitch;
