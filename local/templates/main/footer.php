@@ -244,6 +244,10 @@ while ($arData = $rsData->Fetch()): ?>
 	<? */ ?>
 
 
+<div id="to-top" style="display: block;">
+	<img loading="lazy" alt="Наверх страниы" src="/local/templates/main/images/arrow-up.svg">
+</div>
+
 	</body>
 <? endwhile; ?>
 

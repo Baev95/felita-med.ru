@@ -3,8 +3,8 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Отзывы о прохождении лечения");
 ?>
 <? $APPLICATION->IncludeComponent(
-	"bitrix:news.list",
-	"reviews_list",
+	"bitrix:news.list", 
+	"reviews_list", 
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.M.Y",
 		"ADD_SECTIONS_CHAIN" => "N",
@@ -48,25 +48,26 @@ $APPLICATION->SetTitle("Отзывы о прохождении лечения");
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"PROPERTY_CODE" => array(
-			0 => "AGE",
-			1 => "CITY",
-			2 => "TEXT_DOCTOR",
-			3 => "STARS",
+			0 => "CITY",
+			1 => "AGE",
+			2 => "STARS",
+			3 => "TEXT_DOCTOR",
 			4 => "",
 		),
 		"SET_BROWSER_TITLE" => "N",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "N",
 		"SET_META_KEYWORDS" => "N",
-		"SET_STATUS_404" => "N",
+		"SET_STATUS_404" => "Y",
 		"SET_TITLE" => "N",
-		"SHOW_404" => "N",
+		"SHOW_404" => "Y",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N",
-		"COMPONENT_TEMPLATE" => "reviews_list"
+		"COMPONENT_TEMPLATE" => "reviews_list",
+		"FILE_404" => ""
 	),
 	false
 );

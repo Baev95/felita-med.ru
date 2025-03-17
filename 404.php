@@ -1,12 +1,18 @@
-<?
-include_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/urlrewrite.php');
+<? if ($_SERVER['DOCUMENT_URI'] == "/404.php") {
+ $_SERVER['REQUEST_URI'] = $_SERVER['DOCUMENT_URI'];
+}
 
+include_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/urlrewrite.php');
+$APPLICATION->SetPageProperty("CACHE_TIME", "0");
 CHTTP::SetStatus("404 Not Found");
 @define("ERROR_404", "Y");
-
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-
-$APPLICATION->SetTitle("Страница не найдена"); ?>
+header("HTTP/1.1 404 Not Found");
+$APPLICATION->SetTitle("Страница не найдена");
+$APPLICATION->SetPageProperty("TITLE", "404 Not Found");
+$APPLICATION->SetPageProperty("keywords", "Страница не найдена");
+$APPLICATION->SetPageProperty("description", "Страница не найдена");
+?>
 
 <section class="error section-offset">
 	<div class="error__inner">

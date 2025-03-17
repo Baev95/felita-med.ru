@@ -43,7 +43,7 @@ $APPLICATION->SetTitle("Врачи нашей клиники");
 			8 => "PRICE_HOME",
 			9 => "",
 		),
-		"DETAIL_SET_CANONICAL_URL" => "Y",
+		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
 		"DISPLAY_NAME" => "Y",
@@ -99,7 +99,7 @@ $APPLICATION->SetTitle("Врачи нашей клиники");
 		"FILE_404" => "",
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
-			"section" => "",
+			"section" => "#CODE#/",
 			"detail" => "#ELEMENT_CODE#/",
 		)
 	),

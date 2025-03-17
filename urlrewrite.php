@@ -1,5 +1,13 @@
 <?php
 $arUrlRewrite=array (
+  18 => 
+  array (
+    'CONDITION' => '#/(.+)/\\??(.*)?#',
+    'RULE' => '$2',
+    'ID' => '',
+    'PATH' => '/$1.php',
+    'SORT' => 100,
+  ),
   14 => 
   array (
     'CONDITION' => '#^/services/#',
@@ -16,7 +24,7 @@ $arUrlRewrite=array (
     'PATH' => '/articles/index.php',
     'SORT' => 100,
   ),
-  15 => 
+  17 => 
   array (
     'CONDITION' => '#^/doctors/#',
     'RULE' => '',
