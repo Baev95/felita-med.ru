@@ -82,7 +82,7 @@ while ($arData = $rsData->Fetch()): ?>
 
 				<div class="intro-4__main change-item">
 					<div class="intro-4__main_top">
-						<h1 class="intro-4__title title-h1 change-item__title"><?= $arResult['NAME'] ?></h1>
+						<h1 class="intro-4__title title-h1 change-item__title"><?= $properties['TITLE']['~VALUE'] ?></h1>
 						<div class="intro-4__main_info">
 							<p class="intro-4__main_subtitle"><?= $arResult['PREVIEW_TEXT'] ?></p>
 							<div class="intro-4__cards-mobile">
